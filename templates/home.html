@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HDI Prediction System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <h1>Human Development Index (HDI)</h1>
+            <a href="{{ url_for('predict') }}" class="btn btn-primary">Predict</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h2>A Comprehensive Measure of Well-Being</h2>
+            <p>
+                The Human Development Index (HDI) is a statistical composite index of life expectancy,
+                education, and per capita income indicators used to rank countries into four tiers:
+                Very High, High, Medium, and Low human development.
+            </p>
+            <p>
+                HDI emphasizes that people and their capabilities should be the primary measure of a
+                country's development rather than economic growth alone. It provides a broader
+                perspective by considering health, education, and living standards together.
+            </p>
+        </section>
+
+        <section class="cards">
+            <article class="card">
+                <h3>Scenario 1: Very High Development</h3>
+                <p>Countries with high life expectancy, strong schooling, and high GNI per capita
+                   are classified among the most developed nations.</p>
+            </article>
+            <article class="card">
+                <h3>Scenario 2: Emerging Economies</h3>
+                <p>Mid-range indicators often produce Medium HDI scores, highlighting opportunities
+                   in healthcare, education, and income generation.</p>
+            </article>
+            <article class="card">
+                <h3>Scenario 3: Development Intervention</h3>
+                <p>Lower indicator values predict Low HDI scores and help prioritize policy
+                   interventions for vulnerable populations.</p>
+            </article>
+        </section>
+    </main>
+</body>
+</html>

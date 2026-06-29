@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict HDI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <h1>HDI Prediction</h1>
+            <a href="{{ url_for('home') }}" class="btn btn-secondary">Home</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="form-section">
+            <h2>Enter Development Indicators</h2>
+            <p class="subtitle">Provide country and indicator values to predict the Human Development Index score.</p>
+
+            <form method="POST" action="{{ url_for('predict') }}" class="predict-form">
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <select id="country" name="country" required>
+                        {% for country in countries %}
+                        <option value="{{ country }}">{{ country }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="life_expectancy">Life Expectancy at Birth (years)</label>
+                    <input type="number" id="life_expectancy" name="life_expectancy"
+                           step="0.1" min="40" max="90" placeholder="e.g. 75.5" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="expected_schooling">Expected Years of Schooling</label>
+                    <input type="number" id="expected_schooling" name="expected_schooling"
+                           step="0.1" min="0" max="25" placeholder="e.g. 14.2" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="mean_schooling">Mean Years of Schooling</label>
+                    <input type="number" id="mean_schooling" name="mean_schooling"
+                           step="0.1" min="0" max="20" placeholder="e.g. 9.5" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gni_per_capita">GNI per Capita (PPP $)</label>
+                    <input type="number" id="gni_per_capita" name="gni_per_capita"
+                           step="1" min="500" max="150000" placeholder="e.g. 12000" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Predict HDI</button>
+            </form>
+        </section>
+
+        {% if prediction_text %}
+        <section class="result result-{{ tier|lower|replace(' ', '-') if tier else 'default' }}">
+            <h2>{{ prediction_text }}</h2>
+            {% if message %}
+            <p>{{ message }}</p>
+            {% endif %}
+        </section>
+        {% endif %}
+    </main>
+</body>
+</html>
