@@ -2,8 +2,8 @@ Project Documentation
 
 The project documentation includes
 
-Abstract
-Introduction
+Abstract,
+Introduction, 
 Literature Survey
 Design
 Development
